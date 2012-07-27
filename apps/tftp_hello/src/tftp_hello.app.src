@@ -1,0 +1,13 @@
+{application, tftp_hello,
+ [
+  {description, "a hello-world tftpd"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  inets
+                 ]},
+  {mod, { tftp_hello_app, []}},
+  {env, []}
+ ]}.

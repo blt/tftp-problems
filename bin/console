@@ -1,0 +1,20 @@
+#!/bin/bash
+
+RUNNER_BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../ && pwd )"
+ERL="/usr/bin/env erl"
+
+# Make sure CWD is set to runner base dir
+cd $RUNNER_BASE_DIR
+
+# Make sure the log directories exist
+mkdir -p log/sasl
+
+CMD="$ERL -boot start_sasl\
+ -config etc/inets.config\
+ -pa $RUNNER_BASE_DIR/apps/*/ebin\
+ +K true +A 256
+ -s inets
+ -s tftp_hello_app"
+
+# Start the VM
+exec $CMD

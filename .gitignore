@@ -1,0 +1,5 @@
+.beam
+deps/
+erl_crash.dump
+.app
+ebin/
